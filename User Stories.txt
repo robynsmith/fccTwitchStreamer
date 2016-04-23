@@ -16,6 +16,10 @@ To-do:
 
 - (4) As a user,  I will see a placeholder notification if a streamer has closed their Twitch account (or the account never existed). (Hint: You can verify this works by adding brunofin and comster404 to your array of Twitch streamers).
 
+- (5) Use an array of streamers for testing purposes. The status of each of these users should be displayed. This is the array to be used:
+
+users = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
+
 ====================
 Complete
 ====================
