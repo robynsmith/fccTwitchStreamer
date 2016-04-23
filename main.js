@@ -1,29 +1,38 @@
-var gr;
-
 var users = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
 
 var currentHTML = "";
 
 function getHTML(username, data) {
   if (data["stream"] === null) {
-    currentHTML += username + ': <a href="https://www.twitch.tv/freecodecamp">Offline</a>';
+    currentHTML += username + ': <a href="https://www.twitch.tv/' + username + '">Offline</a></br>';
   }
   else {
-    currentHTML += username +': <a href="https://www.twitch.tv/freecodecamp">Online</a>, Streaming: ' + data["stream"]["game"];
+    currentHTML += username +': <a href="https://www.twitch.tv/' + username + '">Online</a>, Streaming: ' + data["stream"]["game"] + '</br>';
   }
 }
 
-function displayContent(data) {
+function displayContent() {
   //console.log(data);
-  $(".message").html(data);
+  $(".message").html(currentHTML);
+}
+
+function getContent(url, user) {
+   $.getJSON(url, function(data) {
+        getHTML(user, data);
+    });
 }
 
 $(document).ready(function() {
-    $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
-      gr = data;
+    users.forEach(function(user) {
+      console.log(user);
 
-      getHTML("freecodecamp", data);
-      displayContent(currentHTML);
+      var url = 'https://api.twitch.tv/kraken/streams/' + user + '?callback=?';
 
+      getContent(url, user); 
+    
     });
+
+    setTimeout(displayContent, 500);
+    setInterval(displayContent, 60000);
+    setInterval(displayContent, 120000);
 });
