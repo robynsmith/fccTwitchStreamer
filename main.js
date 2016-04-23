@@ -1,10 +1,14 @@
-var users = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
+var users = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff", "brunofin", "comster404"];
 
 var currentHTML = "";
 
 function getHTML(username, data) {
   if (data["stream"] === null) {
     currentHTML += username + ': <a href="https://www.twitch.tv/' + username + '">Offline</a></br>';
+  }
+
+  else if (data["stream"] === undefined) {
+    currentHTML += username + ': Account Closed</br>';
   }
   else {
     currentHTML += username +': <a href="https://www.twitch.tv/' + username + '">Online</a>, Streaming: ' + data["stream"]["game"] + '</br>';
@@ -33,6 +37,6 @@ $(document).ready(function() {
     });
 
     setTimeout(displayContent, 500);
-    setInterval(displayContent, 60000);
-    setInterval(displayContent, 120000);
+    setInterval(displayContent, 10000);
+    setInterval(displayContent, 20000);
 });
