@@ -1,21 +1,29 @@
 var gr;
 
-function displayContent(data) {
-  //console.log(data);
+var users = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
+
+var currentHTML = "";
+
+function getHTML(username, data) {
   if (data["stream"] === null) {
-    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Offline</a>');
+    currentHTML += username + ': <a href="https://www.twitch.tv/freecodecamp">Offline</a>';
   }
   else {
-    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Online</a>, Streaming: ' + data["stream"]["game"]);
+    currentHTML += username +': <a href="https://www.twitch.tv/freecodecamp">Online</a>, Streaming: ' + data["stream"]["game"];
   }
+}
 
+function displayContent(data) {
+  //console.log(data);
+  $(".message").html(data);
 }
 
 $(document).ready(function() {
     $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
       gr = data;
 
-      displayContent(data);
+      getHTML("freecodecamp", data);
+      displayContent(currentHTML);
 
     });
 });
