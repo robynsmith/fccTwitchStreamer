@@ -3,10 +3,10 @@ var gr;
 function displayContent(data) {
   //console.log(data);
   if (data["stream"] === null) {
-    $(".message").html("freecodecamp: offline");
+    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Offline</a>');
   }
   else {
-    $(".message").html("freecodecamp: online");
+    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Online</a>');
   }
 
 }
