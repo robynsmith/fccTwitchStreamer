@@ -6,7 +6,7 @@ function displayContent(data) {
     $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Offline</a>');
   }
   else {
-    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Online</a>');
+    $(".message").html('freecodecamp: <a href="https://www.twitch.tv/freecodecamp">Online</a>, Streaming: ' + data["stream"]["game"]);
   }
 
 }
